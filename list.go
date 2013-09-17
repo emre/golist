@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"strings"
 )
 
 type List struct {
@@ -179,6 +180,14 @@ func (l *List) Count(value interface{}) int {
 
 	return total_count
 
+}
+
+func (l List) String() string {
+	var repr []string
+	for _, val := range l.data {
+		repr = append(repr, fmt.Sprintf("%v", val))
+	}
+	return "[" + strings.Join(repr, ", ") + "]"
 }
 
 // Reverse the elements of the list, in place.
