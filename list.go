@@ -4,12 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
-	"sync"
 )
 
 type List struct {
-	data   []interface{}
-	locker sync.Mutex
+	data []interface{}
 }
 
 var (
@@ -31,19 +29,15 @@ func New(items ...interface{}) List {
 
 // Adds an item to the end of the list data
 func (l *List) Append(items ...interface{}) {
-	l.locker.Lock()
 	l.data = append(l.data, items...)
-	l.locker.Unlock()
 
 }
 
 // Extend the list by appending all the items in te given list.
 func (l *List) Extend(target_list List) {
-	l.locker.Lock()
 	for _, value := range target_list.data {
 		l.data = append(l.data, value)
 	}
-	l.locker.Unlock()
 
 }
 
@@ -57,9 +51,7 @@ func (l *List) Len() int {
 func (l *List) Insert(index int, value interface{}) {
 
 	// Resize list to size(list) + 1 to get free space for new element.
-	l.locker.Lock()
 	size := l.Len()
-	l.locker.Unlock()
 	l.Append(value)
 
 	if size+1 >= index {
@@ -67,15 +59,11 @@ func (l *List) Insert(index int, value interface{}) {
 		for i := size - 1; i >= 0; i-- {
 
 			if index == i {
-				l.locker.Lock()
 				l.data[i+1] = l.data[i]
 				l.data[index] = value
-				l.locker.Unlock()
 				break
 			} else {
-				l.locker.Lock()
 				l.data[i+1] = l.data[i]
-				l.locker.Unlock()
 			}
 
 		}
@@ -89,9 +77,7 @@ func (l *List) Remove(value interface{}) error {
 	error_text := fmt.Sprintf("'%v' is not in list", value)
 	for index, data_value := range l.data {
 		if data_value == value {
-			l.locker.Lock()
 			l.data = append(l.data[:index], l.data[index+1:]...)
-			l.locker.Unlock()
 			return nil
 		}
 	}
@@ -104,9 +90,7 @@ func (l *List) Remove(value interface{}) error {
 // If no index is specified, removes and returns the last item in the list.
 func (l *List) Pop(index ...interface{}) (interface{}, error) {
 
-	l.locker.Lock()
 	list_size := l.Len()
-	l.locker.Unlock()
 
 	if list_size == 0 {
 		return nil, errors.New(fmt.Sprintf(EmptyListError, "Pop"))
@@ -117,14 +101,11 @@ func (l *List) Pop(index ...interface{}) (interface{}, error) {
 
 	if len(index) == 0 {
 
-		l.locker.Lock()
 		value = l.data[list_size-1]
 
 		delete_index = list_size - 1
-		l.locker.Unlock()
 
 	} else {
-		l.locker.Lock()
 		_index := reflect.ValueOf(index[0]).Int()
 
 		if int(_index) > list_size-1 {
@@ -134,7 +115,6 @@ func (l *List) Pop(index ...interface{}) (interface{}, error) {
 		value = l.data[_index]
 
 		delete_index = int(_index)
-		l.locker.Unlock()
 
 	}
 
@@ -161,9 +141,7 @@ func (l *List) Delete(index int) error {
 		return errors.New(fmt.Sprintf(OutOfRangeError, "Delete"))
 	}
 
-	l.locker.Lock()
 	l.data = append(l.data[:index], l.data[index+1:]...)
-	l.locker.Unlock()
 	return nil
 
 }
@@ -193,15 +171,11 @@ func (l *List) Index(value interface{}) (int, error) {
 func (l *List) Count(value interface{}) int {
 	total_count := 0
 
-	l.locker.Lock()
-
 	for _, data_value := range l.data {
 		if data_value == value {
 			total_count++
 		}
 	}
-
-	l.locker.Unlock()
 
 	return total_count
 
@@ -210,19 +184,13 @@ func (l *List) Count(value interface{}) int {
 // Reverse the elements of the list, in place.
 func (l *List) Reverse() {
 
-	l.locker.Lock()
 	list_size := l.Len()
-	l.locker.Unlock()
 
 	if list_size > 0 {
 		top_index := list_size - 1
-		l.locker.Lock()
 		for index := 0; index < (top_index/2)+1; index++ {
-			l.locker.Lock()
 			l.data[index], l.data[top_index-index] = l.data[top_index-index], l.data[index]
-			l.locker.Unlock()
 		}
-		l.locker.Unlock()
 
 	}
 
