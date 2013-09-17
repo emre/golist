@@ -1,4 +1,5 @@
-list.go
 =======
+golist
+======
 
-Python's list type implementation in go.
+python's list type implementation on go.
