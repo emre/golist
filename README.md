@@ -72,7 +72,7 @@ goals_list.Reverse()
 list_size := goals_list.Len()
 ```
 
-#### further documentation
+#### Further documentation
 - <a href="http://godoc.org/github.com/emre/golist">godoc golist</a>
 - <a href="https://github.com/emre/golist/blob/master/list_test.go">usage examples</a>.
 
