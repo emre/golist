@@ -47,6 +47,16 @@ my_list.Remove("Drogba")
 my_list.Delete(0)
 ```
 
+#### Pop items
+
+```go
+// pops the item which of index zero.
+value, error := my_list.Pop(0)
+
+// pops latest item
+value, error := my_list.Pop()
+```
+
 #### Reversing a List
 ```go
 goals_list := golist.New("18:Drogba", "56:Bale", "90+2:Sabri Sarioglu")
