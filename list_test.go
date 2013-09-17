@@ -1,8 +1,6 @@
 package golist
 
 import (
-	//"errors"
-	//"reflect"
 	"testing"
 )
 
