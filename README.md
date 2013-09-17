@@ -16,11 +16,6 @@ my_list.Append("Drogba")
 my_list.Append("Bruma")
 ```
 
-#### Appending items
-```go
-my_list.Append("Drogba")
-my_list.Append("Bruma")
-```
 
 #### Extending list with another list
 ```go
