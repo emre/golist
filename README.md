@@ -3,6 +3,14 @@ golist
 
 python's list type implementation on go.
 
+#### installation
+```bash
+$ go get github.com/emre/golist
+```
+
+#### documentation
+<a href="http://godoc.org/github.com/emre/golist">godoc golist</a>
+
 
 #### Initialization of a new List 
 ```go
