@@ -1,4 +1,4 @@
-golist
+golist [![Build Status](https://travis-ci.org/emre/golist.png)](https://travis-ci.org/emre/golist) [![Clone in Koding](http://kbutton.org/clone.png?v99)](http://kbutton.org/emre/golist)
 ======
 
 python's list type implementation on go.
@@ -7,10 +7,6 @@ python's list type implementation on go.
 ```bash
 $ go get github.com/emre/golist
 ```
-
-#### documentation
-<a href="http://godoc.org/github.com/emre/golist">godoc golist</a>
-
 
 #### Initialization of a new List 
 ```go
@@ -75,4 +71,8 @@ goals_list.Reverse()
 ```go
 list_size := goals_list.Len()
 ```
+
+#### further documentation
+- <a href="http://godoc.org/github.com/emre/golist">godoc golist</a>
+- <a href="https://github.com/emre/golist/blob/master/list_test.go">usage examples</a>.
 
