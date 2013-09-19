@@ -31,7 +31,7 @@ my_list.Extend(other_list)
 ```go
 index, err := my_list.Index("Drogba")
 if err != nil {
-	fmt.Println(error)
+	fmt.Println(err)
 }
 fmt.Println(index)
 ```
