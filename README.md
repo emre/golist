@@ -29,8 +29,8 @@ my_list.Extend(other_list)
 
 #### Get an index for the element
 ```go
-index, error := my_list.Index("Drogba")
-if error != nil {
+index, err := my_list.Index("Drogba")
+if err != nil {
 	fmt.Println(error)
 }
 fmt.Println(index)
@@ -55,10 +55,10 @@ my_list.Delete(0)
 
 ```go
 // pops the item which of index zero.
-value, error := my_list.Pop(0)
+value, err := my_list.Pop(0)
 
 // pops latest item
-value, error := my_list.Pop()
+value, err := my_list.Pop()
 ```
 
 #### Reversing a List
