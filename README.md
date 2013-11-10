@@ -76,3 +76,7 @@ list_size := goals_list.Len()
 - <a href="http://godoc.org/github.com/emre/golist">godoc golist</a>
 - <a href="https://github.com/emre/golist/blob/master/list_test.go">usage examples</a>.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/emre/golist/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
